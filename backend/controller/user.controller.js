@@ -1,5 +1,4 @@
 const User = require("../models/user.model");
-const { options } = require("../routes/user.routes");
 const {ApiError}=require("./../utils/ApiError");
 const {ApiResponse}=require("./../utils/ApiResponse");
 
@@ -108,6 +107,23 @@ const loginController=async (req, res)=>{
     }
 }
 
+const logoutController=(req, res)=>{
+    const options={
+        httpOnly: true,
+        secure: true
+    }
+    return res
+    .status(200)
+    .cookie('accessToken', '', options)
+    .json(
+        new ApiResponse(
+            200,
+            {},
+            "Logged out successfully"
+        )
+    );
+}
+
 const userDetailsController=async (req, res)=>{
     try{
         const user=req.user;
@@ -127,4 +143,4 @@ const userDetailsController=async (req, res)=>{
     }
 }
 
-module.exports={registerController, loginController, userDetailsController};
+module.exports={registerController, loginController, userDetailsController, logoutController};

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Navbar from './../components/Navbar.js';
 import { apiEndPoints } from '../utils/api.js';
 import { useAuth } from '../context/auth.js';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -9,6 +10,7 @@ const Login = () => {
   const [password, setPassword]=useState('');
   const [errorMessage, setErrorMessage]=useState('');
   const {setUser, setIsLoggedIn}=useAuth();
+  const navigate=useNavigate();
 
   const handleSubmit=async (e)=>{
     try{
@@ -40,6 +42,7 @@ const Login = () => {
       // console.log(data.data.user);
       setUser(data.data.user);
       setIsLoggedIn(true);
+      navigate('/');
 
     }catch(error){
       // console.log(error.message);

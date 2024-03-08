@@ -16,6 +16,9 @@ const AuthProvider=({children})=>{
                     credentials: 'include'
                 })
                 const data=await response.json();
+                if(!response.ok){
+                    throw new Error(data.message);
+                }
                 setUser(data.data);
                 setIsLoggedIn(true);
             }catch(error){
