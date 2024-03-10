@@ -10,7 +10,7 @@ const UserDashboard = () => {
                 <button className='w-full text-md border-2 rounded-md border-gray-400 hover:bg-gray-200 py-2'>Orders</button>
             </div>
         </div>
-        <div className="content w-8/12 mt-2 bg-blue-500">
+        <div className="content w-8/12 my-2 bg-blue-500">
             content
         </div>
     </div>

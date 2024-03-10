@@ -3,6 +3,7 @@ const app=express();
 const dotenv=require('dotenv');
 const cors=require('cors');
 const userRoutes=require('./routes/user.routes');
+const categoryRoutes=require('./routes/category.routes');
 const { connectDB } = require('./config/db');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 4000;
@@ -21,6 +22,7 @@ app.use(cookieParser());
 
 //routes
 app.use('/api/user', userRoutes);
+app.use('/api/category', categoryRoutes);
 
 connectDB().then(()=>{
     app.listen(port, ()=>{
