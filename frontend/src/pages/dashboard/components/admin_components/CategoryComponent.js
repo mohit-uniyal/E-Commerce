@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import { apiEndPoints } from '../../../../utils/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CategoryComponent = ({ category, categoriesUpdated, setCategoriesUpdated }) => {
 
@@ -23,8 +25,28 @@ const CategoryComponent = ({ category, categoriesUpdated, setCategoriesUpdated }
                 throw new Error(data.message);
             }
             setCategoriesUpdated(!categoriesUpdated);
+            toast.success('Category Deleted', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
         } catch (error) {
-            console.log(error);
+            const errorMessage=error.message || "Something went wrong";
+            toast.error(errorMessage, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
         }
     }
 
@@ -53,9 +75,29 @@ const CategoryComponent = ({ category, categoriesUpdated, setCategoriesUpdated }
 
             setIsEditing(false);
             setCategoriesUpdated(!categoriesUpdated);
+            toast.success('Category Updated Successfully', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
 
         }catch(error){
-            console.log(error);
+            const errorMessage=error.message || "Something went wrong";
+            toast.error(errorMessage, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
         }
     }
 

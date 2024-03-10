@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { apiEndPoints } from '../../../../utils/api';
 import CategoryComponent from './CategoryComponent';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ManageCategory = () => {
 
@@ -45,11 +45,30 @@ const ManageCategory = () => {
             if (!response.ok) {
                 throw new Error(data.message);
             }
-            // toast('New Category Added');
+            toast.success('New Category Added', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+                });
             setNewCategory('');
             setCategoriesUpdated(!categoriesUpdated);
         } catch (error) {
-            console.log(error);
+            const errorMessage=error.message || "Something went wrong";
+            toast.error(errorMessage, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
         }
     }
 

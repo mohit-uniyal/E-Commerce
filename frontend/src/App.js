@@ -10,7 +10,6 @@ import {
 import Notfound from './pages/Notfound';
 import PrivateRoutes from './utils/PrivateRoutes.js';
 import Dashboard from './pages/dashboard/Dashboard.js';
-// import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (

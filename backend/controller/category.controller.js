@@ -43,6 +43,12 @@ const updateCategoryController=async (req, res)=>{
         if(!exists){
             throw new ApiError(404, "Category not found");
         }
+
+        const nameExists=await Category.findOne({name: newName});
+        if(nameExists){
+            throw new ApiError(409, "Category with same name already exists");
+        }
+
         const updatedCategory=await Category.findByIdAndUpdate(
             id,
             {
