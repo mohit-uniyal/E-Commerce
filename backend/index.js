@@ -4,6 +4,7 @@ const dotenv=require('dotenv');
 const cors=require('cors');
 const userRoutes=require('./routes/user.routes');
 const categoryRoutes=require('./routes/category.routes');
+const productRoutes=require('./routes/product.routes');
 const { connectDB } = require('./config/db');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 4000;
@@ -23,6 +24,7 @@ app.use(cookieParser());
 //routes
 app.use('/api/user', userRoutes);
 app.use('/api/category', categoryRoutes);
+app.use('/api/product', productRoutes);
 
 connectDB().then(()=>{
     app.listen(port, ()=>{
