@@ -30,4 +30,12 @@ const uploadOnCoudinary=async (localFilePath)=>{
     }
 }
 
-module.exports={uploadOnCoudinary};
+const deleteFromCloudinary=async (publicID)=>{
+    try{
+        await cloudinary.uploader.destroy(publicID)
+    }catch(error){
+        console.log(error);
+    }
+}
+
+module.exports={uploadOnCoudinary, deleteFromCloudinary};

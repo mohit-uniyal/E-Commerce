@@ -8,5 +8,9 @@ export const apiEndPoints={
     getCategories: `${baseURL}/category/get-categories`,
     createCategory: `${baseURL}/category/create-category`,
     deleteCategory: `${baseURL}/category/delete-category`,
-    editCategory: `${baseURL}/category/update-category`
+    editCategory: `${baseURL}/category/update-category`,
+    createProduct: `${baseURL}/product/create-product`,
+    getProducts: `${baseURL}/product/get-products`,
+    updateProduct: `${baseURL}/product/update-product`,
+    deleteProduct: `${baseURL}/product/delete-product`
 }

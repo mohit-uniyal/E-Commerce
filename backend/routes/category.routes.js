@@ -6,6 +6,6 @@ const router=require('express').Router();
 router.post('/create-category', verifyJWT, verifyAdmin, createCategoryController);
 router.post('/update-category', verifyJWT, verifyAdmin, updateCategoryController);
 router.post('/delete-category', verifyJWT, verifyAdmin, deleteCategoryController);
-router.get('/get-categories', verifyJWT, getCategoriesController);
+router.get('/get-categories', getCategoriesController);
 
 module.exports=router;

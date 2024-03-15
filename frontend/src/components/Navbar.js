@@ -55,7 +55,7 @@ const Header = () => {
     }
 
   return (
-    <div className='flex justify-between relative w-screen items-center md:p-3 py-3 px-2 border-b-2 border-gray-400 bg-white'>
+    <div className='flex justify-between relative w-full items-center md:p-3 py-3 px-2 border-b-2 border-gray-400 bg-white'>
         <Link to='/home' className='flex gap-2 items-center md:text-2xl text-xl font-medium z-10' >
             <FaShoppingBag />
             <h1 >Ecommerce-App</h1>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import DefaultComponent from './DefaultComponent';
 import ManageCategory from './admin_components/ManageCategory';
-import ManageProduct from './admin_components/ManageProduct';
+import CreateProduct from './admin_components/CreateProduct';
 import ManageUser from './admin_components/ManageUser';
+import ManageProduct from './admin_components/ManageProduct';
 
 const AdminDashboard = () => {
 
@@ -10,6 +11,10 @@ const AdminDashboard = () => {
     {
       name: "Manage Category",
       component: <ManageCategory />
+    },
+    {
+      name: "Create Product",
+      component: <CreateProduct />
     },
     {
       name: "Manage Product",
@@ -39,7 +44,7 @@ const AdminDashboard = () => {
                 }
             </div>
         </div>
-        <div className="content w-8/12 mt-2">
+        <div className="content w-8/12 my-2">
             {
               selectedComponent ? selectedComponent : <DefaultComponent />
             }

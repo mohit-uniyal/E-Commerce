@@ -82,7 +82,7 @@ const ManageCategory = () => {
             </div>
             <div className='w-full flex flex-col'>
                 {
-                    categories.map((category, index) => <CategoryComponent category={category} categoriesUpdated={categoriesUpdated} setCategoriesUpdated={setCategoriesUpdated} />)
+                    categories.map((category, index) => <CategoryComponent key={index} category={category} categoriesUpdated={categoriesUpdated} setCategoriesUpdated={setCategoriesUpdated} />)
                 }
             </div>
             {/* <ToastContainer /> */}

@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <div className='flex flex-col min-h-screen justify-between'>
         <Navbar />
-        <div className="main-dashboard grow w-screen">
+        <div className="main-dashboard grow w-full">
             {user.role===1 ? <AdminDashboard /> : <UserDashboard />}
         </div>
         <CustomFooter />
