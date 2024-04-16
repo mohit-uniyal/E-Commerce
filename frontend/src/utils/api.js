@@ -11,6 +11,7 @@ export const apiEndPoints={
     editCategory: `${baseURL}/category/update-category`,
     createProduct: `${baseURL}/product/create-product`,
     getProducts: `${baseURL}/product/get-products`,
+    getProduct: `${baseURL}/product/get-product`,
     updateProduct: `${baseURL}/product/update-product`,
     deleteProduct: `${baseURL}/product/delete-product`
 }

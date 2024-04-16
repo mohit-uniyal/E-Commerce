@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/auth';
+import { CartProvider } from './context/cart';
 import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
+      <CartProvider>
       <App />
       <ToastContainer
         position="top-center"
@@ -23,6 +25,7 @@ root.render(
         pauseOnHover={false}
         theme="light"
       />
+      </CartProvider>
     </AuthProvider>
   </React.StrictMode>
 );

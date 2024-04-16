@@ -40,7 +40,7 @@ const AdminDashboard = () => {
             <h1 className='text-2xl text-center font-medium my-3'>Admin Panel</h1>
             <div className="admin-options flex flex-col gap-2">
                 {
-                  adminControls.map((control)=><button className={`w-full text-md rounded-md py-2 ${selectedControl===control.name ? "bg-blue-500 text-white" : "hover:bg-gray-200 border-gray-400 border-2"}`} onClick={()=>handleAdminPanel(control.name, control.component)}>{control.name}</button>)
+                  adminControls.map((control, index)=><button key={index} className={`w-full text-md rounded-md py-2 ${selectedControl===control.name ? "bg-blue-500 text-white" : "hover:bg-gray-200 border-gray-400 border-2"}`} onClick={()=>handleAdminPanel(control.name, control.component)}>{control.name}</button>)
                 }
             </div>
         </div>

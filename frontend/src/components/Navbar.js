@@ -16,10 +16,6 @@ const Header = () => {
         page: 'Home'
       },
       {
-        path: '/category',
-        page: 'Category'
-      },
-      {
         path: '/signup',
         page: 'Signup'
       },
@@ -78,7 +74,7 @@ const Header = () => {
                   }
                 }
               })
-              .map((navOption)=> <Link to={navOption.path} className={`hover:text-gray-700 transition-all ${currentPage===navOption.path ? 'underline' : ''}`}>{navOption.page}</Link>)
+              .map((navOption, index)=> <Link key={index} to={navOption.path} className={`hover:text-gray-700 transition-all ${currentPage===navOption.path ? 'underline' : ''}`}>{navOption.page}</Link>)
             }
             {isLoggedIn && <button className='hover:text-gray-700 transition-all' onClick={logoutHandler} >Logout</button>}
         </div>

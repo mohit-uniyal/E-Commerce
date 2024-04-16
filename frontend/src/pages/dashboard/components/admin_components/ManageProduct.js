@@ -14,7 +14,14 @@ const ManageProduct = () => {
     const getProducts=async ()=>{
       try{
         const response=await fetch(apiEndPoints.getProducts, {
-          method: 'GET'
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            categoriesSelected: [],
+            priceSelected: {}
+          })
         });
         const data=await response.json();
         if(!response.ok){

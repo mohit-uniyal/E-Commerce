@@ -143,4 +143,47 @@ const userDetailsController=async (req, res)=>{
     }
 }
 
-module.exports={registerController, loginController, userDetailsController, logoutController};
+const updateUserDetailsController=async(req, res)=>{
+    //1. fetch all the user details provided by the user
+    //2. check if the user exists or not
+    //3. update the user details which are provided by the user
+    //4. return the success message with updated user details.
+    try{
+        const {_id, name, email, phone, address}=req.body;
+
+        const exists=await User.findById(_id);
+
+        if(!exists){
+            throw new ApiError(404, "User doesn't exists");
+        }
+
+        const updatedUser=await User.findByIdAndUpdate(
+            _id,
+            {
+                name: name || exists.name,
+                email: email || exists.email,
+                phone: phone || exists.phone,
+                address: address || exists.address
+            }
+        ).select("-password");
+
+        return res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                updatedUser,
+                "User Updated Successfully"
+            )
+        );
+
+    }catch(error){
+        const statusCode=error.statusCode || 500;
+        const errorMessage=error.message || "Something went wrong";
+        res.status(statusCode).json({
+            message: errorMessage
+        })
+    }
+}
+
+module.exports={registerController, loginController, userDetailsController, logoutController, updateUserDetailsController};

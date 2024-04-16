@@ -56,9 +56,23 @@ const createProductController=async (req, res)=>{
 
 const getAllProductsController=async (req, res)=>{
     try{
-        //1. fetch all the products from the database.
+        //1. get all the filters from parameters
+        //2. fetch all the products from the database.
         //2. send the response to user.
-        const products=await Product.find({});
+        const {categoriesSelected, priceSelected}=req.body;
+        const filter={};
+        if(categoriesSelected.length>0){
+            filter.category = {
+                $in : categoriesSelected
+            }
+        }
+        if(Object.keys(priceSelected).length>0){
+            filter.price = {
+                $gte: priceSelected.lb,
+                $lte: priceSelected.ub
+            }
+        }
+        const products=await Product.find(filter);
         res
         .status(200)
         .json(
@@ -188,4 +202,36 @@ const deleteProductController=async (req, res)=>{
     }
 }
 
-module.exports={createProductController, getAllProductsController, updateProductController, deleteProductController};
+const getProductController=async (req, res)=>{
+    //1. fetch the id of product
+    //2. check if the product exists
+    //3. if product exists, send the product info
+    try{
+        const {id}=req.params;
+
+        const product=await Product.findById(id);
+
+        if(!product){
+            throw new ApiError(404, "product not found");
+        }
+
+        return res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                product,
+                "product fetched successfully"
+            )
+        );
+
+    }catch(error){
+        const statusCode=error.statusCode || 500;
+        const errorMessage=error.message || "Something went wrong";
+        res.status(statusCode).json({
+            message: errorMessage
+        });
+    }
+}
+
+module.exports={createProductController, getAllProductsController, updateProductController, deleteProductController, getProductController};
