@@ -4,6 +4,7 @@ export const apiEndPoints={
     register: `${baseURL}/user/register`,
     login: `${baseURL}/user/login`,
     getUserDetails: `${baseURL}/user/userDetails`,
+    updateUserDetails: `${baseURL}/user/update-user-details`,
     logout: `${baseURL}/user/logout`,
     getCategories: `${baseURL}/category/get-categories`,
     createCategory: `${baseURL}/category/create-category`,
@@ -13,5 +14,9 @@ export const apiEndPoints={
     getProducts: `${baseURL}/product/get-products`,
     getProduct: `${baseURL}/product/get-product`,
     updateProduct: `${baseURL}/product/update-product`,
-    deleteProduct: `${baseURL}/product/delete-product`
+    deleteProduct: `${baseURL}/product/delete-product`,
+    createCheckoutSession: `${baseURL}/checkout/create-checkout-session`,
+    getUserOrders: `${baseURL}/order/get-orders-user`,
+    getAdminOrders: `${baseURL}/order/get-orders-admin`,
+    updateOrderStatus: `${baseURL}/order/update-order-status`,
 }

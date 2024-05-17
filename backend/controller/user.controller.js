@@ -164,6 +164,9 @@ const updateUserDetailsController=async(req, res)=>{
                 email: email || exists.email,
                 phone: phone || exists.phone,
                 address: address || exists.address
+            },
+            {
+                new: true
             }
         ).select("-password");
 

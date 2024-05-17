@@ -4,6 +4,9 @@ import Navbar from '../../components/Navbar'
 import { CiShoppingCart } from "react-icons/ci";
 import CartProductItem from './components/CartProductItem';
 import { useCart } from '../../context/cart';
+import {loadStripe} from '@stripe/stripe-js';
+import {toast} from 'react-toastify';
+import { apiEndPoints } from '../../utils/api';
 
 const EmptyCart=()=>{
   return (
@@ -31,6 +34,38 @@ const Cart = () => {
     return <EmptyCart />
   }
 
+  const makePayment=async ()=>{
+    try{
+      const stripe = await loadStripe('pk_test_51PBc33SETwjiWbMUeqbIIKqj0xQNbB5moUdkUNCOOR2DeGwubH3sGWxOTWOjIK3gHqutGeC5oSbNtVzMQui6tqZc008seZyqU4');
+
+      const response=await fetch(apiEndPoints.createCheckoutSession, {
+        method: "POST",
+        credentials: 'include',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cart)
+      })
+
+      const session=await response.json();
+
+      if(!response.ok){
+        throw new Error(response.message);
+      }
+
+      const result=stripe.redirectToCheckout({
+        sessionId: session.id
+      });
+
+      if(result.error){
+        throw new Error(result.error);
+      }
+
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   return (
     <div className='flex flex-col min-h-screen justify-between gap-4'>
         <Navbar />
@@ -50,6 +85,8 @@ const Cart = () => {
             <div className=' bg-black h-[1px]' ></div>
             <br />
             <div className='text-3xl text-center'>Total:₹ {totalCost}</div>
+            <br />
+            <button className='bg-blue-500 text-white text-xl w-full rounded-md py-1' onClick={makePayment} >Checkout</button>
           </div>
         </div>
         <CustomFooter />

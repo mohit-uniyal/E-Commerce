@@ -5,6 +5,8 @@ const cors=require('cors');
 const userRoutes=require('./routes/user.routes');
 const categoryRoutes=require('./routes/category.routes');
 const productRoutes=require('./routes/product.routes');
+const checkoutRoutes=require('./routes/checkout.routes');
+const orderRoutes=require('./routes/order.routes');
 const { connectDB } = require('./config/db');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 4000;
@@ -25,6 +27,8 @@ app.use(cookieParser());
 app.use('/api/user', userRoutes);
 app.use('/api/category', categoryRoutes);
 app.use('/api/product', productRoutes);
+app.use('/api/checkout', checkoutRoutes);
+app.use('/api/order', orderRoutes);
 
 connectDB().then(()=>{
     app.listen(port, ()=>{

@@ -12,6 +12,7 @@ import PrivateRoutes from './utils/PrivateRoutes.js';
 import Dashboard from './pages/dashboard/Dashboard.js';
 import Cart from './pages/cart/Cart.js';
 import ProductDetails from './pages/ProductDetails.js';
+import Success from './pages/success/Success.jsx';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Notfound />} />
+        <Route path='/success' element={<Success />} />
         <Route element={<PrivateRoutes />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/cart' element={<Cart />} />

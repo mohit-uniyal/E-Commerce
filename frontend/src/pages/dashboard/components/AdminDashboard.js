@@ -4,10 +4,16 @@ import ManageCategory from './admin_components/ManageCategory';
 import CreateProduct from './admin_components/CreateProduct';
 import ManageUser from './admin_components/ManageUser';
 import ManageProduct from './admin_components/ManageProduct';
+import Profile from './user_components/Profile';
+import Orders from './admin_components/Orders';
 
 const AdminDashboard = () => {
 
   const adminControls=[
+    {
+      name: "Profile",
+      component: <Profile />
+    },
     {
       name: "Manage Category",
       component: <ManageCategory />
@@ -21,8 +27,8 @@ const AdminDashboard = () => {
       component: <ManageProduct />
     },
     {
-      name: "Users",
-      component: <ManageUser />
+      name: "Orders",
+      component: <Orders />
     }
   ];
 
