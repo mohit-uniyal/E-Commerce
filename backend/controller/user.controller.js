@@ -81,7 +81,8 @@ const loginController=async (req, res)=>{
 
         const options={
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite: 'None'
         }
 
         return res
@@ -110,7 +111,8 @@ const loginController=async (req, res)=>{
 const logoutController=(req, res)=>{
     const options={
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: 'None'
     }
     return res
     .status(200)
