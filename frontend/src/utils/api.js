@@ -1,4 +1,4 @@
-const baseURL='http://localhost:4000/api';
+const baseURL='https://e-commerce-backend-xi-cyan.vercel.app/api';
 
 export const apiEndPoints={
     register: `${baseURL}/user/register`,
