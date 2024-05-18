@@ -11,3 +11,5 @@
 2. Navigate to the frontend folder of the project.
 3. Run command: npm install
 4. Run the following command to start the frontend application: npm run start
+
+## Deployed: [Click-here](https://e-commerce-frontend-iota-ten.vercel.app/)
