@@ -16,7 +16,7 @@ dotenv.config();
 
 //middlewares
 app.use(cors({
-    origin: ['https://e-commerce-frontend-iota-ten.vercel.app/'],
+    origin: ['https://e-commerce-frontend-iota-ten.vercel.app'],
     credentials: true
 }))
 app.use(express.json());
